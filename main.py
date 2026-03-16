@@ -3,7 +3,7 @@ from PIL import ImageTk, Image
 
 
 def open_dashboard():
-    login_frame.pack_forget()   # hide login page
+    login_frame.pack_forget()
 
     dashboard_frame.pack(fill="both", expand=True)
 
@@ -45,7 +45,6 @@ def logout():
     login_frame.pack(fill="both", expand=True)
 
 
-# -------- ROOT WINDOW --------
 root = Tk()
 root.title("GIET Shopping")
 root.geometry("600x550")
@@ -55,7 +54,6 @@ icon = ImageTk.PhotoImage(Image.open("icon1.png"))
 root.iconphoto(True, icon)
 
 
-# -------- LOGIN FRAME --------
 login_frame = Frame(root, bg="#1E1E2F")
 login_frame.pack(fill="both", expand=True)
 
@@ -136,7 +134,6 @@ footer = Label(card,
 footer.pack(side="bottom", pady=10)
 
 
-# -------- DASHBOARD FRAME --------
 dashboard_frame = Frame(root, bg="#1E1E2F")
 
 

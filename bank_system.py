@@ -33,7 +33,6 @@ class Bank:
         self.lock = threading.Lock()
         self.daily_limit = 50000
 
-    # Generate Account Number
     def generate_account_number(self):
 
         while True:
@@ -42,7 +41,6 @@ class Bank:
             if acc_no not in self.accounts:
                 return acc_no
 
-    # Create Account
     def create_account(self, name, balance):
 
         acc_no = self.generate_account_number()
@@ -55,7 +53,6 @@ class Bank:
         print("Account created successfully")
         print("Your Account Number:", acc_no)
 
-    # Deposit
     def deposit(self, acc_no, amount):
 
         if acc_no not in self.accounts:
@@ -69,7 +66,6 @@ class Bank:
 
         print("Deposit successful")
 
-    # Withdraw
     def withdraw(self, acc_no, amount):
 
         if acc_no not in self.accounts:
@@ -86,7 +82,6 @@ class Bank:
 
         print("Withdrawal successful")
 
-    # Transfer
     def transfer(self, sender, receiver, amount):
 
         with self.lock:
@@ -94,7 +89,6 @@ class Bank:
             if sender not in self.accounts or receiver not in self.accounts:
                 raise InvalidAccount("Invalid account number")
 
-            # Transaction limit check
             if amount > self.daily_limit:
 
                 msg = f"Suspicious Transaction: {sender} tried to send {amount}"
@@ -123,7 +117,6 @@ class Bank:
 
             print("Transfer successful")
 
-    # Check Balance
     def check_balance(self, acc_no):
 
         if acc_no not in self.accounts:
@@ -131,7 +124,6 @@ class Bank:
 
         print("Balance:", self.accounts[acc_no]["balance"])
 
-    # Transaction History
     def show_transactions(self):
 
         print("\nTransaction History")
@@ -143,7 +135,6 @@ class Bank:
         for t in self.transactions:
             print(t)
 
-    # Suspicious Transactions
     def show_suspicious_transactions(self):
 
         print("\nSuspicious Transactions")
@@ -155,7 +146,6 @@ class Bank:
         for s in self.suspicious_transactions:
             print(s)
 
-    # Show All Accounts
     def show_accounts(self):
 
         print("\nAll Accounts")
@@ -175,7 +165,7 @@ class Bank:
 bank = Bank()
 
 
-# CLI Menu
+
 def menu():
 
     while True:
